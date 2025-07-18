@@ -1,0 +1,56 @@
+import { useForm } from "react-hook-form"
+import axios from "./../api/axios"
+import { useNavigate } from "react-router-dom"
+import { useState } from "react"
+
+export default function Register() {
+  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
+  const [error, setError] = useState("")
+
+  const onSubmit = async (data: any) => {
+    try {
+      await axios.post("/auth/register", data)
+      navigate("/login")
+    } catch (err: any) {
+      setError(err.response?.data?.message || "Registration failed")
+    }
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <form onSubmit={handleSubmit(onSubmit)} className="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Create an Account</h2>
+
+        {error && <p className="text-red-600 mb-4">{error}</p>}
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Name</label>
+          <input {...register("name")} type="text" className="w-full border px-3 py-2 rounded" />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Email</label>
+          <input {...register("email")} type="email" className="w-full border px-3 py-2 rounded" />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 mb-1">Password</label>
+          <input {...register("password")} type="password" className="w-full border px-3 py-2 rounded" />
+        </div>
+
+        <div className="mb-6">
+          <label className="block text-gray-700 mb-1">Role</label>
+          <select {...register("role")} className="w-full border px-3 py-2 rounded">
+            <option value="client">Client</option>
+            <option value="nutritionist">Nutritionist</option>
+          </select>
+        </div>
+
+        <button type="submit" className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700">
+          Register
+        </button>
+      </form>
+    </div>
+  )
+}
