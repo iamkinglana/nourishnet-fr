@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
-import { useAuth } from "../../auth/AuthContext"
+import { useAuth } from "./AuthContext"
+
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
@@ -11,8 +12,16 @@ export default function Login() {
 
   const onSubmit = async (data: any) => {
     try {
-      await login(data.email, data.password)
-      navigate("/dashboard")
+      const user = await login(data.email, data.password)
+
+if (user.role === "nutritionist") {
+  navigate("/nutritionist/DashboardPage")
+} else if (user.role === "client") {
+  navigate("/client/ClientDashboard")
+} else {
+  setError("Unknown user role")
+}
+
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed")
     }

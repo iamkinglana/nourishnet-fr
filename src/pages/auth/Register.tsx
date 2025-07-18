@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import axios from "./../api/axios"
+import axios from "../../api/axios"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 
@@ -10,7 +10,7 @@ export default function Register() {
 
   const onSubmit = async (data: any) => {
     try {
-      await axios.post("/auth/register", data)
+      await axios.post("/auth/signup", data)
       navigate("/login")
     } catch (err: any) {
       setError(err.response?.data?.message || "Registration failed")
