@@ -37,9 +37,9 @@ export default function AppRouter() {
 {
     user?.role === "nutritionist" && (
         <Route path="/dashboard" element = {< NutritionistDashboard />} />
-        <Route path="/n/dashboard" element={<NutritionistDashboard />} />
-        <Route path="/n/clients" element={<ClientsPage />} />
-        <Route path="/n/clients/:id" element={<ClientDetailsPage />} />
+            < Route path = "/nutritionist/dashboard" element = {< NutritionistDashboard />} />
+                < Route path = "/nutritionist/clients" element = {< ClientsPage />} />
+                    < Route path = "/nutritionist/clients/:id" element = {< ClientDetailsPage />} />
 
 
         )}
