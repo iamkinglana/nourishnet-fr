@@ -45,17 +45,17 @@
 
 // export const useAuth = () => useContext(AuthContext)
 
-
 import {
   createContext,
   useContext,
   useEffect,
   useState,
+  type ReactNode,
 } from "react"
-import type { ReactNode } from "react"
 
 import axios from "../../api/axios"
-import { AuthContextType, User } from "./types" // adjust the path
+import type { AuthContextType, User } from "./types"
+
 
 export const AuthContext = createContext<AuthContextType | null>(null)
 
