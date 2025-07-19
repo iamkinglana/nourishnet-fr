@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/nutritionist/clients/:id/progress" element={<ClientProgressPage />} />
         <Route path="/nutritionist/ai/meals" element={<MealSuggestionsPage />} />
         <Route path="/nutritionist/ai/meal-plans" element={<AutoMealPlanPage />} />
-        <Route path="/nutritionist/meal-plans/:id/edit" element={<MealPlanEditor />} />
+        <Route path="/nutritionist/meal-plans/:id/edit" element={<MealPlanEditor planId="new" />} />
 
         {/* Redirects / 404 */}
         <Route path="/" element={<Navigate to="/login" />} />

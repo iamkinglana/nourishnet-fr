@@ -2,6 +2,13 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from "recharts"
 
+// Move this ABOVE the component so it's available in type annotations
+const titleMap = {
+  weight: "Weight (kg)",
+  energy: "Energy Level",
+  mood: "Mood"
+}
+
 export default function ProgressChart({
   data, metric, color
 }: {
@@ -9,13 +16,6 @@ export default function ProgressChart({
   metric: keyof typeof titleMap
   color: string
 }) {
-
-  const titleMap = {
-    weight: "Weight (kg)",
-    energy: "Energy Level",
-    mood: "Mood"
-  }
-
   return (
     <div className="bg-white p-4 rounded shadow">
       <h3 className="text-lg font-semibold mb-2">{titleMap[metric]}</h3>
@@ -25,7 +25,13 @@ export default function ProgressChart({
           <XAxis dataKey="date" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey={metric} stroke={color} strokeWidth={2} dot={{ r: 4 }} />
+          <Line
+            type="monotone"
+            dataKey={metric}
+            stroke={color}
+            strokeWidth={2}
+            dot={{ r: 4 }}
+          />
         </LineChart>
       </ResponsiveContainer>
     </div>
