@@ -51,8 +51,9 @@ import {
   useContext,
   useEffect,
   useState,
-  ReactNode,
 } from "react"
+import type { ReactNode } from "react"
+
 import axios from "../../api/axios"
 import { AuthContextType, User } from "./types" // adjust the path
 

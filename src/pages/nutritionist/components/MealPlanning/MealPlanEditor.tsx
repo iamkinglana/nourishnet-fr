@@ -80,21 +80,65 @@
 // }
 
 
+// import { useEffect, useState } from "react"
+// import { useParams } from "react-router-dom"
+// import axios from "../../../../api/axios"
+
+// export default function MealPlanEditor() {
+//   const { id } = useParams()
+//   const [plan, setPlan] = useState<any>(null)
+//   const [loading, setLoading] = useState(true)
+
+//   useEffect(() => {
+//     axios.get(`/nutritionist/meal-plans/${id}`).then(res => {
+//       setPlan(res.data)
+//       setLoading(false)
+//     })
+//   }, [id])
+
+//   if (loading) return <div>Loading...</div>
+//   if (!plan) return <div>Meal plan not found</div>
+
+//   return (
+//     <div className="space-y-6">
+//       <h1 className="text-2xl font-bold">{plan.title}</h1>
+//       {plan.days.map((day: any, i: number) => (
+//         <div key={i}>
+//           <h2 className="text-lg font-semibold">{day.day}</h2>
+//           <ul className="space-y-2">
+//             {day.meals.map((meal: any, idx: number) => (
+//               <li key={idx} className="p-3 bg-white rounded shadow">
+//                 <strong>{meal.time}:</strong> {meal.name} — {meal.calories} kcal
+//                 <div className="text-sm text-gray-500">
+//                   Ingredients: {meal.ingredients?.join(", ")}
+//                 </div>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       ))}
+//     </div>
+//   )
+// }
+
+// MealPlanEditor.tsx
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
 import axios from "../../../../api/axios"
 
-export default function MealPlanEditor() {
-  const { id } = useParams()
+type Props = {
+  planId: string
+}
+
+export default function MealPlanEditor({ planId }: Props) {
   const [plan, setPlan] = useState<any>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(`/nutritionist/meal-plans/${id}`).then(res => {
+    axios.get(`/nutritionist/meal-plans/${planId}`).then(res => {
       setPlan(res.data)
       setLoading(false)
     })
-  }, [id])
+  }, [planId])
 
   if (loading) return <div>Loading...</div>
   if (!plan) return <div>Meal plan not found</div>
