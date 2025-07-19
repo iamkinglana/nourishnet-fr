@@ -6,9 +6,10 @@ export default function ProgressChart({
   data, metric, color
 }: {
   data: any[]
-  metric: string
+  metric: keyof typeof titleMap
   color: string
 }) {
+
   const titleMap = {
     weight: "Weight (kg)",
     energy: "Energy Level",

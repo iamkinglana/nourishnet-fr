@@ -27,7 +27,8 @@ export default function EditMealPlanPage() {
   return (
     <NutritionistLayout>
       <h1 className="text-2xl font-bold mb-4">Edit Meal Plan</h1>
-      <MealPlanEditor />
+      <MealPlanEditor planId="new" />
+
     </NutritionistLayout>
   )
 }
