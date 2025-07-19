@@ -14,13 +14,21 @@ export default function Login() {
     try {
       const user = await login(data.email, data.password)
 
+// if (user.role === "nutritionist") {
+//   navigate("/nutritionist/dashboard")
+
+// } else if (user.role === "client") {
+//   navigate("/client/dashboard")
+// } else {
+//   setError("Unknown user role")
+// }
+
 if (user.role === "nutritionist") {
-  navigate("/nutritionist/DashboardPage")
+  navigate("/nutritionist/dashboard")
 } else if (user.role === "client") {
-  navigate("/client/ClientDashboard")
-} else {
-  setError("Unknown user role")
+  navigate("/dashboard")
 }
+
 
     } catch (err: any) {
       setError(err.response?.data?.message || "Login failed")
