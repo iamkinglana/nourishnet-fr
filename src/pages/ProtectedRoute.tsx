@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, ReactNode } from "react"
-import axios from "../../api/axios"
+import axios from "../api/axios"
 
 interface User {
   id: string
