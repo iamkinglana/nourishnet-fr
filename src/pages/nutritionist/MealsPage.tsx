@@ -7,7 +7,7 @@ export default function MealsPage() {
     <NutritionistLayout>
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-bold">My Meals</h1>
-        <Link to="/n/meals/new" className="bg-blue-600 text-white px-4 py-2 rounded">
+        <Link to="/nutritionist/meals/new" className="bg-blue-600 text-white px-4 py-2 rounded">
           + Add Meal
         </Link>
       </div>

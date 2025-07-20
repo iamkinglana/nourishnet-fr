@@ -14,7 +14,7 @@ export default function ClientDetails({ clientId }: { clientId: string }) {
     <div className="bg-white p-4 rounded shadow mb-6">
       <h2 className="text-xl font-semibold">{client.name}</h2>
       <p>Email: {client.email}</p>
-      <p>Goals: {client.goals}</p>
+      <p>Goals: {client.intake?.goals}</p>
       <p>Allergies: {client.allergies}</p>
       <p>Diet: {client.diet}</p>
       <p>Lifestyle: {client.lifestyle}</p>

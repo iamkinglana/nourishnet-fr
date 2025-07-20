@@ -67,9 +67,12 @@ import ProfilePage from "../pages/client/ProfilePage"
 import NutritionistDashboard from "../pages/nutritionist/NutritionistDashboard"
 import ClientsPage from "../pages/nutritionist/ClientsPage"
 import ClientDetailsPage from "../pages/nutritionist/ClientDetailsPage"
-
 export default function AppRouter() {
-  const { user } = useAuth()
+  const { user, loading  } = useAuth()
+
+   if (loading) return <div>Loading...</div>
+
+  console.log("User:", user)
 
   return (
     <BrowserRouter>
@@ -81,7 +84,8 @@ export default function AppRouter() {
         {/* Client Routes */}
         {user?.role === "client" && (
           <>
-            <Route path="/dashboard" element={<ClientDashboard />} />
+            // <Route path="/dashboard" element={<ClientDashboard />} />
+            <Route path="/client/dashboard" element={<ClientDashboard />} />
             <Route path="/meal-plan" element={<MealPlanPage />} />
             <Route path="/grocery-list" element={<GroceryListPage />} />
             <Route path="/check-in" element={<CheckInPage />} />

@@ -16,7 +16,7 @@ export default function Login() {
       if (user.role === "nutritionist") {
         navigate("/nutritionist/dashboard")
       } else if (user.role === "client") {
-        navigate("/dashboard")
+        navigate("/client/dashboard")
       } else {
         setError("Unknown user role")
       }
